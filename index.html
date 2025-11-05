@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NutriFuel - Fuel Your Focus · Power Your Day!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0a0a0a;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background-color: rgba(10, 10, 10, 0.95);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .logo-text {
+            color: #fff;
+        }
+
+        .logo-fuel {
+            color: #00ffc8;
+        }
+
+        .tagline {
+            font-size: 0.7rem;
+            color: #999;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #00ffc8;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .sign-in {
+            color: #00ffc8;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: opacity 0.3s;
+        }
+
+        .sign-in:hover {
+            opacity: 0.8;
+        }
+
+        .cta-button {
+            background: #00ffc8;
+            color: #0a0a0a;
+            padding: 0.8rem 1.8rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 255, 200, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8rem 5% 5rem;
+            gap: 5rem;
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+        }
+
+        .hero-subtitle {
+            color: #00ffc8;
+        }
+
+        .hero-description {
+            font-size: 1.3rem;
+            color: #999;
+            line-height: 1.6;
+            margin-bottom: 3rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .btn-primary {
+            background: #00ffc8;
+            color: #0a0a0a;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 255, 200, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #00ffc8;
+            padding: 1rem 2.5rem;
+            border: 2px solid #00ffc8;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background: #00ffc8;
+            color: #0a0a0a;
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .product-card {
+            background: linear-gradient(135deg, #f4e900 0%, #f4e900 100%);
+            padding: 3rem;
+            border-radius: 30px;
+            max-width: 450px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .product-card img {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 8rem 5%;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #999;
+            max-width: 800px;
+            margin: 0 auto 5rem;
+            line-height: 1.6;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 4rem;
+            margin-top: 5rem;
+        }
+
+        .feature-card {
+            text-align: center;
+        }
+
+        .feature-icon {
+            width: 100px;
+            height: 100px;
+            background: rgba(0, 255, 200, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            font-size: 3rem;
+        }
+
+        .feature-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-description {
+            font-size: 1.1rem;
+            color: #999;
+            line-height: 1.6;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 8rem 5%;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 5rem;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 3rem;
+            border-radius: 20px;
+            transition: transform 0.3s;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .stars {
+            color: #00ffc8;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: #ccc;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #00ffc8, #0088ff);
+        }
+
+        .author-info h4 {
+            margin-bottom: 0.3rem;
+        }
+
+        .author-role {
+            color: #00ffc8;
+            font-size: 0.9rem;
+        }
+
+        .ingredients-image img {
+    width: 100%;
+    max-width: 450px; /* prevents image from being huge */
+    height: auto;
+    border-radius: 20px;
+    display: block;
+    margin: 0 auto;
+}
+
+        /* Ingredients Section */
+        .ingredients {
+            padding: 8rem 5%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .ingredients-image {
+           
+            padding: 3rem;
+            border-radius: 30px;
+        }
+
+        .ingredients-content h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .ingredients-subtitle {
+            font-size: 1.2rem;
+            color: #999;
+            margin-bottom: 3rem;
+        }
+
+        .ingredients-list-title {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+        }
+
+        .ingredient-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .check-icon {
+            color: #00ffc8;
+            font-size: 1.5rem;
+            margin-top: 0.2rem;
+        }
+
+        .ingredient-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .ingredient-benefit {
+            color: #999;
+        }
+
+        .nutrition-facts {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 3rem;
+        }
+
+        .nutrition-facts h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .nutrition-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .nutrition-item {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 8rem 5%;
+            text-align: center;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 5rem;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .pricing-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .pricing-card.featured {
+            border-color: #00ffc8;
+            transform: scale(1.05);
+        }
+
+        .best-seller {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #00ffc8;
+            color: #0a0a0a;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            border-color: #00ffc8;
+        }
+
+        .pricing-card h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .pricing-subtitle {
+            color: #999;
+            margin-bottom: 2rem;
+        }
+
+        .price {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .price-detail {
+            color: #999;
+            margin-bottom: 3rem;
+        }
+
+        .features-list {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 3rem;
+        }
+
+        .features-list li {
+            padding: 0.8rem 0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #00ffc8;
+            border: 2px solid #00ffc8;
+            padding: 1rem 3rem;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .btn-outline:hover {
+            background: #00ffc8;
+            color: #0a0a0a;
+        }
+
+        .btn-featured {
+            background: #00ffc8;
+            color: #0a0a0a;
+            border: none;
+        }
+
+        .btn-featured:hover {
+            background: #00e6b3;
+        }
+
+        /* Newsletter Section */
+        .newsletter {
+            padding: 6rem 5%;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .newsletter h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .newsletter-subtitle {
+            font-size: 1.2rem;
+            color: #999;
+            margin-bottom: 3rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 1.2rem;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            font-size: 1rem;
+        }
+
+        .newsletter-input::placeholder {
+            color: #666;
+        }
+
+        .newsletter-disclaimer {
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 5rem 5% 3rem;
+            background: #050505;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand p {
+            color: #999;
+            line-height: 1.6;
+            margin: 1.5rem 0;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            color: #999;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #00ffc8;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: #999;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #00ffc8;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            color: #999;
+        }
+
+        .contact-icon {
+            color: #00ffc8;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 6rem;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .ingredients {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo-section">
+            <div class="logo">
+             <!-- <span class="logo-text">NUTRI</span><span class="logo-fuel">FUEL</span>
+                <div class="tagline">Fuel Your Focus · Power Your Day!</div>  -->
+                <img src="logo_nutra.png" height="80px">
+            </div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="nav-actions">
+            <button class="theme-toggle">☀️</button>
+            <a href="signin.html" class="sign-in">Sign In</a>
+            <a href="getsample.html" class="cta-button">Get Free Sample</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>
+                Stay Sharp.<br>
+                <span class="hero-subtitle">Stay Fueled.</span>
+            </h1>
+            <p class="hero-description">
+                The sugar-free, natural energy drink designed for students and professionals who want focus and productivity without the crash.
+            </p>
+            <div class="hero-buttons">
+                <button class="btn-primary">Get Free Sample</button>
+                <button class="btn-secondary">Know More</button>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="product-card">
+                <img src="bottle.jpeg">
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <h2 class="section-title">Why Choose NutriFuel?</h2>
+        <p class="section-subtitle">
+            Experience the perfect balance of natural energy and mental clarity designed for your demanding lifestyle.
+        </p>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🍃</div>
+                <h3 class="feature-title">Natural Ingredients</h3>
+                <p class="feature-description">
+                    Made with 100% natural ingredients sourced from organic farms. No artificial preservatives or synthetic additives.
+                </p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3 class="feature-title">Boosts Focus & Energy</h3>
+                <p class="feature-description">
+                    Enhanced with natural caffeine and brain-boosting nutrients that improve concentration and sustained energy.
+                </p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🛡️</div>
+                <h3 class="feature-title">No Sugar Crash</h3>
+                <p class="feature-description">
+                    Zero sugar formula prevents energy crashes, keeping you productive throughout your day without the jitters.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <h2 class="section-title">What Our Community Says</h2>
+        <p class="section-subtitle">
+            Join thousands of students and professionals who fuel their success with NutriFuel.
+        </p>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">
+                    "NutriFuel has been a game-changer during my finals. I can study for hours without feeling jittery or crashing. The natural ingredients give me peace of mind too!"
+                </p>
+                <div class="testimonial-author">
+                    <div class="author-avatar"></div>
+                    <div class="author-info">
+                        <h4>Sara khan Pandit</h4>
+                        <p class="author-role">Computer Science Student</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">
+                    "As someone who works long hours, I needed something that wouldn't make me crash mid-afternoon. NutriFuel keeps me sharp and focused throughout my entire workday."
+                </p>
+                <div class="testimonial-author">
+                    <div class="author-avatar"></div>
+                    <div class="author-info">
+                        <h4>Anjali mehta</h4>
+                        <p class="author-role">Marketing Professional</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">
+                    "Finally, an energy drink that doesn't leave me feeling worse later. The taste is great and it actually helps me concentrate on complex coding problems for hours."
+                </p>
+                <div class="testimonial-author">
+                    <div class="author-avatar"></div>
+                    <div class="author-info">
+                        <h4>Alex rahul</h4>
+                        <p class="author-role">Software Developer</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ingredients Section -->
+    <section class="ingredients" id="products">
+        <div class="ingredients-image">
+            <img src="bottle.jpeg">
+        </div>
+        <div class="ingredients-content">
+            <h2>Pure Fuel for Your Mind</h2>
+            <p class="ingredients-subtitle">
+                Every ingredient is carefully selected to provide clean, natural energy that works with your body, not against it.
+            </p>
+            <h3 class="ingredients-list-title">Premium Natural Ingredients</h3>
+            <div class="ingredient-item">
+                <span class="check-icon">✓</span>
+                <div>
+                    <div class="ingredient-name">Natural Caffeine</div>
+                    <div class="ingredient-benefit">- Sustained energy boost</div>
+                </div>
+            </div>
+            <div class="ingredient-item">
+                <span class="check-icon">✓</span>
+                <div>
+                    <div class="ingredient-name">L-Theanine</div>
+                    <div class="ingredient-benefit">- Calm focus & mental clarity</div>
+                </div>
+            </div>
+            <div class="ingredient-item">
+                <span class="check-icon">✓</span>
+                <div>
+                    <div class="ingredient-name">B-Vitamins Complex</div>
+                    <div class="ingredient-benefit">- Enhanced brain function</div>
+                </div>
+            </div>
+            <div class="ingredient-item">
+                <span class="check-icon">✓</span>
+                <div>
+                    <div class="ingredient-name">Ginseng Extract</div>
+                    <div class="ingredient-benefit">- Natural vitality support</div>
+                </div>
+            </div>
+            <div class="ingredient-item">
+                <span class="check-icon">✓</span>
+                <div>
+                    <div class="ingredient-name">Green Tea Extract</div>
+                    <div class="ingredient-benefit">- Antioxidant protection</div>
+                </div>
+            </div>
+            <div class="ingredient-item">
+                <span class="check-icon">✓</span>
+                <div>
+                    <div class="ingredient-name">Stevia Leaf</div>
+                    <div class="ingredient-benefit">- Natural zero-calorie sweetener</div>
+                </div>
+            </div>
+            <div class="nutrition-facts">
+                <h3>Nutrition Facts</h3>
+                <div class="nutrition-grid">
+                    <div class="nutrition-item">
+                        <span>Calories:</span>
+                        <span>10</span>
+                    </div>
+                    <div class="nutrition-item">
+                        <span>Total Sugar:</span>
+                        <span>0g</span>
+                    </div>
+                    <div class="nutrition-item">
+                        <span>Caffeine:</span>
+                        <span>120mg</span>
+                    </div>
+                    <div class="nutrition-item">
+                        <span>Sodium:</span>
+                        <span>15mg</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <h2 class="section-title">Choose Your Fuel Plan</h2>
+        <p class="section-subtitle">
+            Select the perfect pack size for your lifestyle. All plans include our premium natural formula and satisfaction guarantee.
+        </p>
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h3>Starter Pack</h3>
+                <p class="pricing-subtitle">Perfect for trying NutriFuel</p>
+                <div class="price">24₹</div>
+                <p class="price-detail">/ 6 cans</p>
+                <ul class="features-list">
+                    <li><span class="check-icon">✓</span> 6 premium energy drinks</li>
+                    <li><span class="check-icon">✓</span> Free shipping on orders over ₹25</li>
+                    <li><span class="check-icon">✓</span> Natural ingredients guarantee</li>
+                    <li><span class="check-icon">✓</span> 30-day money back guarantee</li>
+                </ul>
+                <button class="btn-outline">Try Now</button>
+            </div>
+            <div class="pricing-card featured">
+                <span class="best-seller">Best Seller</span>
+                <h3>Power Pack</h3>
+                <p class="pricing-subtitle">Best value for regular users</p>
+                <div class="price">₹89</div>
+                <p class="price-detail">/ 24 cans</p>
+                <ul class="features-list">
+                    <li><span class="check-icon">✓</span> 24 premium energy drinks</li>
+                    <li><span class="check-icon">✓</span> Free express shipping</li>
+                    <li><span class="check-icon">✓</span> Natural ingredients guarantee</li>
+                    <li><span class="check-icon">✓</span> Priority customer support</li>
+                    <li><span class="check-icon">✓</span> Save 25% vs individual cans</li>
+                    <li><span class="check-icon">✓</span> Flexible delivery schedule</li>
+                </ul>
+                <button class="btn-outline btn-featured">Buy Now</button>
+            </div>
+            <div class="pricing-card">
+                <h3>Fuel Club</h3>
+                <p class="pricing-subtitle">Maximum savings for power users</p>
+                <div class="price">₹149</div>
+                <p class="price-detail">/ 48 cans</p>
+                <ul class="features-list">
+                    <li><span class="check-icon">✓</span> 48 premium energy drinks</li>
+                    <li><span class="check-icon">✓</span> Free express shipping</li>
+                    <li><span class="check-icon">✓</span> Natural ingredients guarantee</li>
+                    <li><span class="check-icon">✓</span> VIP customer support</li>
+                    <li><span class="check-icon">✓</span> Save 35% vs individual cans</li>
+                    <li><span class="check-icon">✓</span> Monthly auto-delivery option</li>
+                    <li><span class="check-icon">✓</span> Exclusive flavor previews</li>
+                </ul>
+                <button class="btn-outline">Try Now</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <h2>Join the Fuel Club</h2>
+        <p class="newsletter-subtitle">
+            Get exclusive discounts, nutrition tips, and be the first to know about new flavors and products.
+        </p>
+        <form class="newsletter-form">
+            <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
+            <button type="submit" class="btn-primary">Join the Fuel Club</button>
+        </form>
+        <p class="newsletter-disclaimer">No spam, just fuel for your success. Unsubscribe anytime.</p>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="logo">
+                    <span class="logo-text">NUTRI</span><span class="logo-fuel">FUEL</span>
+                </div>
+                <p>Natural energy drinks designed for students and professionals who demand peak performance without compromise.</p>
+                <div class="social-links">
+                    <a href="#">📘</a>
+                    <a href="#">🐦</a>
+                    <a href="#">📷</a>
+                    <a href="#">💼</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Company</h3>
+                <ul class="footer-links">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Ingredients</a></li>
+                    <li><a href="#">Nutrition Facts</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Support</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Contact Support</a></li>
+                    <li><a href="#">Shipping Info</a></li>
+                    <li><a href="#">Returns & Refunds</a></li>
+                    <li><a href="#">Track Your Order</a></li>
+                    <li><a href="#">Wholesale</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Get in Touch</h3>
+                <div class="contact-item">
+                    <span class="contact-icon">✉️</span>
+                    <span>hello@nutrifuel.com</span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">📞</span>
+                    <span>999999999</span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">📍</span>
+                    <span>Amravati, Maharashtra</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Theme toggle functionality
+        const themeToggle = document.querySelector('.theme-toggle');
+        themeToggle.addEventListener('click', () => {
+            document.body.style.transition = 'background-color 0.3s, color 0.3s';
+            if (document.body.style.backgroundColor === 'rgb(10, 10, 10)' || !document.body.style.backgroundColor) {
+                document.body.style.backgroundColor = '#f5f5f5';
+                document.body.style.color = '#0a0a0a';
+                themeToggle.textContent = '🌙';
+            } else {
+                document.body.style.backgroundColor = '#0a0a0a';
+                document.body.style.color = '#fff';
+                themeToggle.textContent = '☀️';
+            }
+        });
+
+        // Newsletter form submission
+        document.querySelector('.newsletter-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.querySelector('.newsletter-input').value;
+            alert(`Thank you for joining the Fuel Club! We've sent a confirmation to ₹{email}`);
+            document.querySelector('.newsletter-input').value = '';
+        });
+
+        // Scroll animation for cards
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards
+        document.querySelectorAll('.feature-card, .testimonial-card, .pricing-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+
+        // Navbar scroll effect
+        let lastScroll = 0;
+        const nav = document.querySelector('nav');
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                nav.style.boxShadow = '0 4px 20px rgba(0, 255, 200, 0.1)';
+            } else {
+                nav.style.boxShadow = 'none';
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        // Button hover effects
+        document.querySelectorAll('button, .cta-button').forEach(button => {
+            button.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-2px)';
+            });
+            button.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Pricing card selection effect
+        document.querySelectorAll('.pricing-card').forEach(card => {
+            card.addEventListener('click', function() {
+                document.querySelectorAll('.pricing-card').forEach(c => {
+                    c.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                });
+                this.style.borderColor = '#00ffc8';
+            });
+        });
+    </script>
+</body>
+</html>
